@@ -1,0 +1,14 @@
+---
+title: "All the Right Questions 2026-07"
+---
+
+## Test
+
+This is a test
+
+- I am a cool man
+
+1.  This list is
+2.  ordered
+    1.  (wow)
+    2.  (nice)
