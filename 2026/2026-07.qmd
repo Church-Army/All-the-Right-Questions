@@ -12,11 +12,11 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## This week:
 
--   [A promotion](-@sec-promotion): Church Army Survey Design Training
--   [The Big Idea](-@sec-big-idea): Saying 'Yes And' to our funders (with data!)
--   [The blunder](-@sec-blunder): Failure to compare
--   [The lesson](-@sec-lesson): Statistics is a little hamster on a tiny bicycle
--   [The puzzle](-@sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
+-   [A promotion](@sec-promotion): Church Army Survey Design Training
+-   [The Big Idea](@sec-big-idea): Saying 'Yes And' to our funders (with data!)
+-   [The blunder](@sec-blunder): Failure to compare
+-   [The lesson](@sec-lesson): Statistics is a little hamster on a tiny bicycle
+-   [The puzzle](@sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
 
 ## A promotion: Come and learn how to do surveys!
 
@@ -36,7 +36,7 @@ Expect plenty of chat, lots of examples and no small amount of real-time survey 
 
 I had a really exciting conversation an the Mission Support Team day on Tuesday. I was talking to someone who manages a project, and they were telling me that the project stakeholders were asking the wrong questions (or at least, they weren't always asking *all the right questions*).
 
-![](images/clipboard-4033239090.png "Arrested development is a really great show you should watch it."){fig-alt= "The scene from Arrested Development where he says 'hey, that's the name of the show', except I've made it say 'that's the name of the newsletter', pretty funny right?"}
+![](images/clipboard-4033239090.png "Arrested Development is a great show you should watch it"){fig-alt="Arrested Development's Michael Bluth saying 'Hey, that's the name of the newsletter'"}
 
 I was absolutely thrilled, and it helped me to put my finger on something that had been bothering me: Very often there is little-to-no critical engagement with stakeholder requirements for the quantitative reporting around a project. The stakeholder says, "Please measure X" and we say, "Okay we'll ask our data guy to make it happen."
 
@@ -64,7 +64,7 @@ I was working with the Training and Equipping team on a survey of training alumn
 
 The survey closed. The results were in. They didn't really tell us anything.
 
-![](images/clipboard-1167862317.png "Future emails won't all be full of Arrested Development references."){fig-alt= "Job Bluth saying 'I've made a huge mistake'"}
+![](images/clipboard-1167862317.png "Future emails won't all be full of Arrested Development references."){fig-alt="Job Bluth saying 'I've made a huge mistake.'"}
 
 Some trainees didn't have a uni degree, but lots of them did - more, in fact, than the population average. But what does that really mean? After all we were surveying from a group of people who had decided to undertake additional training, some of which would be unavoidably academic. Did I really expect this group to have fewer previous qualifications that the population average.
 
@@ -78,7 +78,7 @@ This week, we'll be looking at a really important fundamental idea that's often 
 
 Imagine you've just finished watching a bike race, and you think that the winner was cheating by taking performance-enhancing supplements. You decide to test this theory, so you head to the pet shop buy a hamster, for whom you build a tiny bike:
 
-![](images/clipboard-3914663401.jpeg){alt-text = "A picture of a hamster on a bicycle"}
+![](images/clipboard-3914663401.jpeg){fig-alt="A picture of a hamster on a bicycle"}
 
 You construct a to-scale velodrome for your hamster and his tiny bike, then you give him an appropriate dose of performance-enhancing supplements. You decide that if your hamster's time is closer to the winning cyclist's time than to the other riders, then you've proven the winner had taken the supplements.
 
