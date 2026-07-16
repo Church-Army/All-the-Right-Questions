@@ -6,19 +6,19 @@ title: "All the Right Questions July 2026"
 
 Hello, and welcome to the first ever edition of *All the Right Questions:* The new monthly (??) newsletter for Church Army staff in which we think together about how we can get, share and use the data that we need to do the work that God has called us to. The format is still evolving, but I'm hoping to use this space to signpost resources, celebrate successes and remind you all that I exist and that I care about your professional relationship with data.
 
-Thanks so much for joining me here. If you've got any questions, or if there's anything you'd like to see covered in a future edition of *AtRQ*, please let me know! Drop me an email (I'm david.lovell), or just come and say hi to me at my desk.
+Thanks so much for joining me here. If you've got any questions, or if there's anything you'd like to see covered in a future edition of *ARQ*, please let me know! Drop me an email (I'm david.lovell), or just come and say hi to me at my desk.
 
 This newsletter isn't an official Church Army publication and as such it doesn't represent the views of Church Army. Just me, Data Dave.
 
 ## This week:
 
--   [A promotion](@sec-promotion): Church Army Survey Design Training
--   [The Big Idea](@sec-big-idea): Saying 'Yes And' to our funders (with data!)
--   [The blunder](@sec-blunder): Failure to compare
--   [The lesson](@sec-lesson): Statistics is a little hamster on a tiny bicycle
--   [The puzzle](@sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
+-   [A promotion](#sec-promotion): Church Army Survey Design Training
+-   [The Big Idea](#sec-big-idea): Saying 'Yes And' to our funders (with data!)
+-   [The blunder](#sec-blunder): Failure to compare
+-   [The lesson](#sec-lesson): Statistics is a little hamster on a tiny bicycle
+-   [The puzzle](#sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
 
-## A promotion: Come and learn how to do surveys!
+## A promotion: Come and learn how to do surveys! {#sec-promotion}
 
 I've been making surveys for nearly a decade now. I've made some top-tier ones, but I've also made some awful guffs along the way. This Autumn, I'm going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover *at least* the following:
 
@@ -28,7 +28,7 @@ I've been making surveys for nearly a decade now. I've made some top-tier ones, 
 -   Understanding bias and avoiding it
 -   Not doing anything wrong or illegal in your survey
 
-Expect plenty of chat, lots of examples and no small amount of real-time survey design. It's going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of *AtRQ*. If you're interested, please let me know because it would be a great encouragement to me.
+Expect plenty of chat, lots of examples and no small amount of real-time survey design. It's going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of *ARQ*. If you're interested, please let me know because it would be a great encouragement to me.
 
 ![This could be you, realising your potential to create dope surveys](images/brain-draine.jpg){fig-alt="Brain Drain is my celebrity crush real talk"}
 
@@ -78,7 +78,7 @@ This week, we'll be looking at a really important fundamental idea that's often 
 
 Imagine you've just finished watching a bike race, and you think that the winner was cheating by taking performance-enhancing supplements. You decide to test this theory, so you head to the pet shop buy a hamster, for whom you build a tiny bike:
 
-![](images/clipboard-3914663401.jpeg){fig-alt="A picture of a hamster on a bicycle"}
+![](images/clipboard-3914663401.jpeg){fig-alte"A picture of a hamster on a bicycle"}
 
 You construct a to-scale velodrome for your hamster and his tiny bike, then you give him an appropriate dose of performance-enhancing supplements. You decide that if your hamster's time is closer to the winning cyclist's time than to the other riders, then you've proven the winner had taken the supplements.
 
