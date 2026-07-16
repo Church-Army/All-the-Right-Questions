@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "All the Right Questions",
+    "section": "",
+    "text": "Welcome to the archive of All the Right Questions, a monthly newsletter for Church Army stuff in which we talk about all things data: How to get it, how to use it, how to share it. For any enquiries, please contact David Lovell (Data Insights Analyst)."
+  },
+  {
     "objectID": "2026/2026-07.html",
     "href": "2026/2026-07.html",
     "title": "All the Right Questions July 2026",
@@ -9,34 +16,6 @@
       "2026",
       "All the Right Questions July 2026"
     ]
-  },
-  {
-    "objectID": "2026/2026-07.html#test",
-    "href": "2026/2026-07.html#test",
-    "title": "All the Right Questions 2026-07",
-    "section": "",
-    "text": "This is a test\n\nI am a cool man\n\n\nThis list is\nordered\n\n(wow)\n(nice)",
-    "crumbs": [
-      "2026",
-      "All the Right Questions 2026-07"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "All the Right Questions",
-    "section": "",
-    "text": "Welcome to the archive of All the Right Questions, a monthly newsletter for Church Army stuff in which we talk about all things data: How to get it, how to use it, how to share it. For any enquiries, please contact David Lovell (Data Insights Analyst)."
   },
   {
     "objectID": "2026/2026-07.html#welcome",
@@ -61,8 +40,8 @@
     ]
   },
   {
-    "objectID": "2026/2026-07.html#a-promotion-come-and-learn-how-to-do-surveys",
-    "href": "2026/2026-07.html#a-promotion-come-and-learn-how-to-do-surveys",
+    "objectID": "2026/2026-07.html#sec-promotion",
+    "href": "2026/2026-07.html#sec-promotion",
     "title": "All the Right Questions July 2026",
     "section": "A promotion: Come and learn how to do surveys!",
     "text": "A promotion: Come and learn how to do surveys!\nI’ve been making surveys for nearly a decade now. I’ve made some top-tier ones, but I’ve also made some awful guffs along the way. This Autumn, I’m going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover at least the following:\n\nDesigning purposeful surveys\nFormalising big questions that mean something\nBuilding effective survey items\nUnderstanding bias and avoiding it\nNot doing anything wrong or illegal in your survey\n\nExpect plenty of chat, lots of examples and no small amount of real-time survey design. It’s going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of ARQ. If you’re interested, please let me know because it would be a great encouragement to me.\n\n\n\nThis could be you, realising your potential to create dope surveys",
@@ -110,17 +89,6 @@
     "title": "All the Right Questions July 2026",
     "section": "The Puzzle",
     "text": "The Puzzle\nI’m very happy with this connections puzzle, but I can’t promise anyone is going to enjoy it.",
-    "crumbs": [
-      "2026",
-      "All the Right Questions July 2026"
-    ]
-  },
-  {
-    "objectID": "2026/2026-07.html#sec-promotion",
-    "href": "2026/2026-07.html#sec-promotion",
-    "title": "All the Right Questions July 2026",
-    "section": "A promotion: Come and learn how to do surveys!",
-    "text": "A promotion: Come and learn how to do surveys!\nI’ve been making surveys for nearly a decade now. I’ve made some top-tier ones, but I’ve also made some awful guffs along the way. This Autumn, I’m going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover at least the following:\n\nDesigning purposeful surveys\nFormalising big questions that mean something\nBuilding effective survey items\nUnderstanding bias and avoiding it\nNot doing anything wrong or illegal in your survey\n\nExpect plenty of chat, lots of examples and no small amount of real-time survey design. It’s going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of ARQ. If you’re interested, please let me know because it would be a great encouragement to me.\n\n\n\nThis could be you, realising your potential to create dope surveys",
     "crumbs": [
       "2026",
       "All the Right Questions July 2026"
