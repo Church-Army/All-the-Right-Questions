@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   render:
-    - "!drafts/"
+      - "20*/"
 
 website:
   title: "All the Right Questions"
