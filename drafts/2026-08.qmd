@@ -74,7 +74,73 @@ Some trainees didn't have a uni degree, but lots of them did - more, in fact, th
 
 I had failed to define a benchmark, so I couldn't make a meaningful comparison. When we say that we offer training that's more accessible for people without academic qualifications, what we mean is that it's *more accessible than other forms of theological education*. What we needed to do was to compare Church Army trainees to vicars-in-training at the various Vicar Schools (not a real term) across the Church of England. If our trainees were more academically qualified than the average would-be-vicar, that would plainly contradict the way that we understand and articulate ourselves. Sadly there isn't great data on would-be-vicars at the moment, but I am assured that the vicar schools are working on it.
 
-## The lesson: How freaky is my coin? {#sec-lesson}
+## The lesson: Alex Dobson has Psychic Powers {#sec-lesson}
+
+```{r psychic_powers}
+library(purrr)
+library(ggplot2)
+library(scales)
+
+
+
+# prob_nothing + prob_exact + prob_just_suit + prob_just_rank
+  
+  points_exact <- 1/prob_exact
+  points_just_suit <- 1/prob_just_suit
+  points_just_rank <- 1/prob_just_rank
+  points_nothing <- 0
+
+
+  values <- c(
+    points_nothing,
+    points_just_suit,
+    points_just_rank,
+    points_exact
+  )
+
+# flip_a_card
+flip_cards <- function(n_cards, n_tests, psychic_power = 0) {
+  
+  rolls <- runif(n_cards * n_tests)
+  
+  prob_exact <- 1/52 + psychic_power^2
+  prob_just_suit <- 1/4 + psychic_power - prob_exact
+  prob_just_rank <- 1/13 +psychic_power - prob_exact
+  prob_nothing <- 1 - prob_exact - prob_just_suit - prob_just_rank
+  
+  breaks <- cumsum(c(
+    prob_nothing,
+    prob_just_suit,
+    prob_just_rank,
+    prob_exact
+  ))
+
+  points <- matrix(
+    values[findInterval(rolls, breaks) + 1L],
+    nrow = n_cards)
+
+  colSums(points)
+}
+
+scores <- flip_cards(n_cards = 10, n_tests = 1e5)
+slightly_psychic_scores <- flip_cards(10, 1e5, 0.1)
+highly_psychic_scores <- flip_cards(n_cards = 10, n_tests = 1e5, psychic_power = 0.3)
+
+ggplot(tibble(x = scores), aes(x = x)) +
+  geom_density(trim = TRUE, colour = "black") +
+  geom_density(data = tibble(x = slightly_psychic_scores), trim = TRUE,
+               colour = "blue", fill = "blue", alpha = .05) + 
+  geom_density(data = tibble(x = highly_psychic_scores), trim = TRUE,
+               colour = "purple", fill = "purple", alpha = .05) + 
+  
+  theme_minimal()+
+  labs(x = "Success score")
+
+dobson_score <- 78
+
+label_percent(0.1)(sum(scores >= 78) / length(scores))
+
+```
 
 ## The Puzzle {#sec-puzzle}
 
