@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  render:
+      - "20*/"
 
 website:
   title: "All the Right Questions"
@@ -9,10 +11,11 @@ website:
 format:
   html:
     theme:
-      - cosmo
+      - yeti
       - brand
     css: styles.css
-    toc: true
+    mainfont: "Trebuchet MS"
 
 editor: visual
+
 

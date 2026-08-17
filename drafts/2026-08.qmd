@@ -1,5 +1,5 @@
 ---
-title: "All the Right Questions July 2026"
+title: "All the Right Questions August 2026"
 ---
 
 ## Welcome!
@@ -12,11 +12,15 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## This week:
 
--   [A promotion](#sec-promotion): Church Army Survey Design Training
--   [The Big Idea](#sec-big-idea): Saying 'Yes And' to our funders (with data!)
--   [The blunder](#sec-blunder): I asked a vague question with no benchmarking
--   [The lesson](#sec-lesson): Statistics is a little hamster on a tiny bicycle
--   [The puzzle](#sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
+-   [A promotion](#sec-promotion):
+
+-   [The Big Idea](#sec-big-idea):
+
+-   [The blunder](#sec-blunder):
+
+-   [The lesson](#sec-lesson):
+
+-   [The puzzle](#sec-puzzle):
 
 ## A promotion: Come and learn how to do surveys! {#sec-promotion}
 
@@ -70,57 +74,126 @@ Some trainees didn't have a uni degree, but lots of them did - more, in fact, th
 
 I had failed to define a benchmark, so I couldn't make a meaningful comparison. When we say that we offer training that's more accessible for people without academic qualifications, what we mean is that it's *more accessible than other forms of theological education*. What we needed to do was to compare Church Army trainees to vicars-in-training at the various Vicar Schools (not a real term) across the Church of England. If our trainees were more academically qualified than the average would-be-vicar, that would plainly contradict the way that we understand and articulate ourselves. Sadly there isn't great data on would-be-vicars at the moment, but I am assured that the vicar schools are working on it.
 
-## The lesson: Statistics as model making {#sec-lesson}
+## The lesson: Alex Dobson has Psychic Powers {#sec-lesson}
 
-This is the statistics-lesson part of *ARQ*. If you've made it this far you're a big dork and it's too late to go back. Welcome to after-school statistics club.
+```{r psychic_powers}
+library(purrr)
+library(ggplot2)
+library(scales)
+library(dplyr)
+library(stringr)
 
-This week, we'll be looking at a really important fundamental idea that's often skipped right over when we think about statistics. You probably don't need to understand it to do your job, but I hope that it will equip you to think critically and carefully about statistics of all kinds. It's the importance of **models** in statistical testing.
+set.seed(pi)
 
-Imagine you've just finished watching a bike race, and you think that the winner was cheating by taking performance-enhancing supplements. You decide to test this theory, so you head to the pet shop buy a hamster, for whom you build a tiny bike:
+# prob_nothing + prob_exact + prob_just_suit + prob_just_rank
 
-![](images/clipboard-3914663401.jpeg){fig-alt="A picture of a hamster on a bicycle"}
+prob_exact <- 1/52
+prob_just_suit <- 1/4
+prob_just_rank <- 1/13
+prob_nothing <- 1 - prob_exact - prob_just_suit - prob_just_rank
 
-You construct a to-scale velodrome for your hamster and his tiny bike, then you give him an appropriate dose of performance-enhancing supplements. You decide that if your hamster's time is closer to the winning cyclist's time than to the other riders, then you've proven the winner had taken the supplements.
+points_exact <- 1/prob_exact
+points_just_suit <- 1/prob_just_suit
+points_just_rank <- 1/prob_just_rank
+points_nothing <- 0
 
-Congratulations, you've just conducted your first statistical test, and you've done it by creating your first statistical model. Any attempt to 'prove' something with statistics uses - in one way or another - hamsters on tiny bicycles.
+# flip_a_card
+flip_cards <- function(n_cards, n_tests, psychic_power = 0) {
+  
+  rolls <- runif(n_cards * n_tests)
+  
+  prob_exact_psychic <- min(1/52 + psychic_power^2, 1)
+  prob_just_suit_psychic <- min(1/4 + psychic_power - prob_exact_psychic, 1)
+  prob_just_rank_psychic <- min(1/13 + psychic_power - prob_exact_psychic, 1)
+  prob_nothing_psychic <- min(1 - prob_exact_psychic - prob_just_suit_psychic - prob_just_rank_psychic, 1)
 
-For a more orthodox example, imagine that you're flipping a coin repeatedly for fun. After 10 flips, you've had 8 heads and 2 tails. That seems fishy to you. That's too many heads.
+  values <- c(
+    points_nothing,
+    points_just_suit,
+    points_just_rank,
+    points_exact
+  )
+  
+  breaks <- cumsum(c(
+    prob_nothing_psychic,
+    prob_just_suit_psychic,
+    prob_just_rank_psychic,
+    prob_exact_psychic
+  ))
 
-Functionally, what you're doing here is putting forward a hypothesis: This coin is a *freaky coin*. It comes up heads too often. This statement implies a comparison with a *normal coin*. You don't have a normal coin on you, but you don't need one, because you can create a mental model of a normal coin with almost no effort. Your mental model of a normal coin comes up heads about half the time. In ten flips, you'd expect to see five or six heads, maybe seven. But *eight*? That's too many. That's very improbable. So you reject the hypothesis that this coin is normal, and conclude that it is freaky, because you imagined a normal coin and it didn't come up heads that many times.
+  points <- matrix(
+    values[findInterval(rolls, breaks) + 1L],
+    nrow = n_cards)
 
-None of that is particularly well formalised or conclusive, but none of it is categorically different from 'proper' statistical testing. Let's do some proper testing now by doing ten flips one million times, using the computer:
+  colSums(points)
+}
 
-``` r
-# ~~ R ~~
-# We will simulate 1,000,000 times 10 'normal' coin flips
-n_tests <- 1e6 # (ie. 1,000,000)
-pretend_flips <-
-  rbinom(n = n_tests,    # one million tests,
-         size = 10,  # ten flips,
-         prob = 0.5)  # normal coin)
+scores <- flip_cards(n_cards = 10, n_tests = 1e5)
+slightly_psychic_scores <- flip_cards(10, 1e5, 0.1)
+highly_psychic_scores <- flip_cards(n_cards = 10, n_tests = 1e5, psychic_power = 0.4)
 
-## How many times did we get 8 or more heads?
-number_of_times_we_got_8_heads_or_more <- sum(pretend_flips >= 8)
+psychic_simulations_plot <- 
+  ggplot(tibble(x = scores), aes(x = x)) +
+  
+  geom_density(trim = TRUE, colour = "black") +
 
-## What proprotion of our million flips?
-proportion_8_heads <- number_of_times_we_got_8_heads_or_more/n_tests
+  
+  geom_density(data = tibble(x = slightly_psychic_scores), trim = TRUE,
+               colour = "blue", fill = "blue", alpha = .05) + 
 
-## Make a pretty percentage
-paste0(
-  round(proportion_8_heads, 3) * 100, "%")
-#> [1] "5.5%"
+  
+  geom_density(data = tibble(x = highly_psychic_scores), trim = TRUE,
+               colour = "purple", fill = "purple", alpha = .05) +
+  
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(0, 50, 52)) +
+  
+  labs(x = "Success score", y = "Probablility density",
+       title = "Probable success score by psychic ability",
+       subtitle = "100,000 simulations")
+
+psychic_annotations <- 
+  annotate("text", x = 32, y = 0.03, label = "No psychich ability", hjust = "left") +
+  annotate("text", x = 51, y = 0.018, label = "Psychic score: 0.1",
+           colour = "blue", hjust = "left") +
+  annotate("text", x = 220, y = 0.0045, label = "Psychic score: 0.4",
+           colour = "purple", hjust = "left") +
+  
+  
+
+psychic_simulations_plot
 ```
+```{r bayesian_stuff}
+psychic_scores <- readRDS(here("2026", "data", "psychic-testing_2026.rds"))
+psychic_scores <- 
+  mutate(
+    psychic_scores, 
+    rank_correct = rank_correct & !suit_and_rank_correct,
+    suit_correct = suit_correct & !suit_and_rank_correct
+  ) |> 
+  rename(just_suit_correct = suit_correct, 
+         just_rank_correct = rank_correct)
 
-<sup>Created on 2026-07-09 with [reprex v2.1.1](https://reprex.tidyverse.org)</sup>
+psychic_scores <- 
+  mutate(psychic_scores, 
+         just_rank_correct = just_rank_correct * points_just_rank,
+         just_suit_correct = just_suit_correct * points_just_suit,
+         suit_and_rank_correct = suit_and_rank_correct * points_exact)
 
-Our ten-times-ten-million flips gave us 8 or more heads 5.5% of the time. So is a coin that flips 8 heads out of 10 a freaky coin? The truth is we can't really say. All we can really say is something like:
+psychic_scores <- 
+  mutate(psychic_scores,
+         score = just_rank_correct + just_suit_correct + suit_and_rank_correct,
+         .keep = "unused")
 
-"If our model of a normal coin accurately reflects the behavior of a normal coin in real life, then there's only a 5.5% chance that a normal coin would give 8 out of 10 heads. So there's a 94.5% chance that our coin is freaky."
+psychic_scores <- summarise(psychic_scores, score = sum(score), .by = name)
 
-Let's consider our mouse on a bicycle again. It wasn't a very good statistical test, and you can probably think of several shortcomings. But the one I want to call your attention to is this: What if a tiny mouse on a tiny bike in a tiny velodrome who's taken a tiny amount of performance-enhancing supplements doesn't accurately represent a human cyclist on a normal bike in a full-sized velodrome? If our model does not represent reality, then none of the other numbers mean anything. This is a true for a mouse on a bike as it is for simulated coin flips or online surveys.
+layers <- names(psychic_simulations_plot$layers)
+annotate_layers <- layers[str_detect(layers, "annotate")]
 
-I hope you've enjoyed this month's lesson. Join us next week as we scrutinise the notion of statistical significance and investigate the possible properties of our potentially-freaky coin.
-
+psychic_simulations_plot[[-annotate_layers]] +
+  geom_vline(data = psychic_scores, aes(xintercept =  score),  colour = "orange", alpha = 0.8) +
+  scale_x_continuous(limits = c(NA, 100))
+```
 ## The Puzzle {#sec-puzzle}
 
 I'm very happy with [this connections puzzle](https://connections.swellgarfo.com/game/-OxaHEufUlsD9Y12hnkT), but I can't promise anyone is going to enjoy it.
