@@ -12,21 +12,21 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## This week:
 
--   [A promotion](#sec-promotion): Church Army Survey Design Training
--   [The Big Idea](#sec-big-idea): Saying 'Yes And' to our funders (with data!)
--   [The blunder](#sec-blunder): I asked a vague question with no benchmarking
--   [The lesson](#sec-lesson): Statistics is a little hamster on a tiny bicycle
--   [The puzzle](#sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
+- [A promotion](#sec-promotion): Church Army Survey Design Training
+- [The Big Idea](#sec-big-idea): Saying 'Yes And' to our funders (with data!)
+- [The blunder](#sec-blunder): I asked a vague question with no benchmarking
+- [The lesson](#sec-lesson): Statistics is a little hamster on a tiny bicycle
+- [The puzzle](#sec-puzzle): A tricky Connections that's *very* tenuously related to this week's newsletter.
 
 ## A promotion: Come and learn how to do surveys! {#sec-promotion}
 
 I've been making surveys for nearly a decade now. I've made some top-tier ones, but I've also made some awful guffs along the way. This Autumn, I'm going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover *at least* the following:
 
--   Designing purposeful surveys
--   Formalising big questions that mean something
--   Building effective survey items
--   Understanding bias and avoiding it
--   Not doing anything wrong or illegal in your survey
+- Designing purposeful surveys
+- Formalising big questions that mean something
+- Building effective survey items
+- Understanding bias and avoiding it
+- Not doing anything wrong or illegal in your survey
 
 Expect plenty of chat, lots of examples and no small amount of real-time survey design. It's going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of *ARQ*. If you're interested, please let me know because it would be a great encouragement to me.
 

@@ -17,5 +17,9 @@ format:
     mainfont: "Trebuchet MS"
 
 editor: visual
+callout-appearance: default
+execute:
+  message: false
+  warning: false
 
 

@@ -1,5 +1,7 @@
 ---
 title: "All the Right Questions August 2026"
+execute:
+  echo: false
 ---
 
 ## Welcome!
@@ -12,25 +14,25 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## This week:
 
--   [A promotion](#sec-promotion):
+- [A promotion](#sec-promotion):
 
--   [The Big Idea](#sec-big-idea):
+- [The Big Idea](#sec-big-idea):
 
--   [The blunder](#sec-blunder):
+- [The blunder](#sec-blunder):
 
--   [The lesson](#sec-lesson):
+- [The lesson](#sec-lesson):
 
--   [The puzzle](#sec-puzzle):
+- [The puzzle](#sec-puzzle):
 
 ## A promotion: Come and learn how to do surveys! {#sec-promotion}
 
 I've been making surveys for nearly a decade now. I've made some top-tier ones, but I've also made some awful guffs along the way. This Autumn, I'm going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover *at least* the following:
 
--   Designing purposeful surveys
--   Formalising big questions that mean something
--   Building effective survey items
--   Understanding bias and avoiding it
--   Not doing anything wrong or illegal in your survey
+- Designing purposeful surveys
+- Formalising big questions that mean something
+- Building effective survey items
+- Understanding bias and avoiding it
+- Not doing anything wrong or illegal in your survey
 
 Expect plenty of chat, lots of examples and no small amount of real-time survey design. It's going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of *ARQ*. If you're interested, please let me know because it would be a great encouragement to me.
 
@@ -76,20 +78,80 @@ I had failed to define a benchmark, so I couldn't make a meaningful comparison. 
 
 ## The lesson: Alex Dobson has Psychic Powers {#sec-lesson}
 
-```{r psychic_powers}
+It's a time of change and growth for Church Army; a time of new faces, new challenges and new opportunities. It's a time for evaluating who we are, what we have and where we are going. It's the time to ask, "Does anybody in the Mission Support Team have psychic powers?"
+
+Within the British non-profit sector, psychic ability is perhaps *the* most neglected area of talent-management: Most UK charities have no formal framework for recognising, promoting or developing any of major schools of psychic ability.
+
+With this in mind, I took it upon myself to conduct an initial pilot test for clairvoyance. The purpose of this test was purely to develop our organisational methodology for such testing, but by a stroke of good luck it has inadvertently uncovered a savant within our midsts - I am pleased to report that Alex Dobson has a moderate aptitude for predicting the future.
+
+![](/2026/images/dobson.jpeg "AD activating his powers"){fig-alt="Alex Dobson concentrates on a deck of cards. His brow is furrowed, his forefingers pressed against his temples"}
+Welcome to the first of an exclusive *ARQ* two-parter. This month, we are going to delve deeper into the discipline of statistical modelling. Join us again in September, when we will consider how to make sense of the results by determining just how psychic Alex may or may not be. As always, my hope is to help you to build an instinctive understanding of how statistics work, so that you can scrutinise data and think creatively about asking _All the Right Questions_. 
+
+### The psychic test
+
+I have subjected no fewer than four of my colleagues to the following test:
+
+- Each subject blind draws 10 cards from a standard 52 card deck.
+- Prior to each draw, the participant guesses what the next card will be.
+- Each subject receives a success score on the basis of their accuracy.
+
+Success points are awarded for each of the following:
+
+- Correctly guessing a card (suit and rank[^1])
+- Correctly guessing suit alone
+- Correctly guessing rank alone
+
+[^1]: Eg. the 9 of clubs has a suit of 'clubs' and a rank of 9.
+
+For each of these outcomes, points are awarded in proportion to the improbability of the event. A perfect guess is worth 52 points, and guesses of suit and rank are worth about 4 and 13 points respectively. The scores are constructed in such a way that a non-psychic person should receive, on average, a total of 30 points.
+
+Alex Dobson scored 82.3.
+
+::: {.callout-warning}
+## Does Alex really have psychic powers?
+
+You probably don't believe that Alex Dobson truly has psychic powers[^2]. You _may_, however, believe that 'you can prove anything with statistics'.
+
+This test is not intended to undermine your confidence in statistics by 'proving' that statistics can 'prove anything'. As a matter of fact, statistics can prove nothing by themselves - they merely corroborate existing theories about the real world.
+
+Psychic testing is just a fun way of exploring statistical modelling along with some other abstract concepts - including the inherent limitations of statistical process.
+:::
+
+[^2]: But no shade if you're willing to entertain the possibility!
+
+### The statistical model
+
+The first step in any statistical process is to define your hypothesis. A hypothesis is a hunch about how things are in the real world, and you should be able to explain it in everyday language. Our hypothesis is simply that **People with an inherent psychic ability will be uncannily good at guessing cards.**
+
+We need to construct our hypothesis before we make our statistical model because the hypothesis tells us what the parameters of our model ought to be. In this case, our parameters are:
+
+- Psychic ability
+- Ability to guess cards
+
+Building our model involves creating a number which can represent each of those things, so that we can explore the relationship between the two numbers. 
+
+Remember the 'success score' we gave to each participant for guessing cards correctly? That is the number - or measure - that we are using to describe each participant's ability to correctly guess cards. The beauty of the success score is that it allows us to describe any ten guesses with a single value, which lets us do things like this:
+
+
+```{r non_psychic_plot}
+#| message: false
+#| warning: false
+#| fig-cap: "Simulated scores of 100,000 normal people"
+
 library(purrr)
 library(ggplot2)
 library(scales)
 library(dplyr)
 library(stringr)
+library(here)
 
 set.seed(pi)
 
 # prob_nothing + prob_exact + prob_just_suit + prob_just_rank
 
 prob_exact <- 1/52
-prob_just_suit <- 1/4
-prob_just_rank <- 1/13
+prob_just_suit <- 1/4 - prob_exact
+prob_just_rank <- 1/13 - prob_exact
 prob_nothing <- 1 - prob_exact - prob_just_suit - prob_just_rank
 
 points_exact <- 1/prob_exact
@@ -128,42 +190,104 @@ flip_cards <- function(n_cards, n_tests, psychic_power = 0) {
   colSums(points)
 }
 
+normal_scores <- 
+  map(1:10, \(x) flip_cards(n_cards = 10, n_tests = 1e5)) |> 
+  pmap_dbl(\(...) mean(c(...)))
+
 scores <- flip_cards(n_cards = 10, n_tests = 1e5)
 slightly_psychic_scores <- flip_cards(10, 1e5, 0.1)
-highly_psychic_scores <- flip_cards(n_cards = 10, n_tests = 1e5, psychic_power = 0.4)
+highly_psychic_scores <- flip_cards(n_cards = 10, n_tests = 1e5, psychic_power = 0.25)
 
-psychic_simulations_plot <- 
+non_psychic_plot <-
+
   ggplot(tibble(x = scores), aes(x = x)) +
   
-  geom_density(trim = TRUE, colour = "black") +
-
-  
-  geom_density(data = tibble(x = slightly_psychic_scores), trim = TRUE,
-               colour = "blue", fill = "blue", alpha = .05) + 
-
-  
-  geom_density(data = tibble(x = highly_psychic_scores), trim = TRUE,
-               colour = "purple", fill = "purple", alpha = .05) +
+  geom_density(colour = "black", fill = "black", alpha = 0.05)   + 
   
   theme_minimal() +
-  scale_x_continuous(breaks = seq(0, 50, 52)) +
   
-  labs(x = "Success score", y = "Probablility density",
-       title = "Probable success score by psychic ability",
+  labs(x = "Success score", y = "Probablility density\n(higher = more likely)",
+       title = "Probable success scores  - no psychic ability",
        subtitle = "100,000 simulations")
 
-psychic_annotations <- 
-  annotate("text", x = 32, y = 0.03, label = "No psychich ability", hjust = "left") +
-  annotate("text", x = 51, y = 0.018, label = "Psychic score: 0.1",
-           colour = "blue", hjust = "left") +
-  annotate("text", x = 220, y = 0.0045, label = "Psychic score: 0.4",
-           colour = "purple", hjust = "left") +
+psychic_simulations_plot <-
   
+  non_psychic_plot + 
+  
+  geom_density(data = tibble(x = slightly_psychic_scores), 
+               colour = "blue", fill = "blue", alpha = .2) + 
+
+  
+  geom_density(data = tibble(x = highly_psychic_scores), 
+               colour = "purple", fill = "purple", alpha = .2) +
+  
+  scale_x_continuous(breaks = seq(0, 1000, 50), limits = c(NA, 350)) +
+  
+  ggtitle("Probably success scores by psychic ability")
   
 
-psychic_simulations_plot
+
+non_psychic_plot
 ```
+
+Those are the success scores of 100,000 people, each drawing ten cards. None of them are psychic.
+
+A couple of things to note:
+
+- The average score is 30, which means our simulation is working as expected
+- The graph is quite wibbly, because there are a limited number of possible scores a person can get by drawing 10 cards
+- The distribution is heavily skewed: Although the average is 30, most people get fewer points. A small number bring up the average by getting massive scores.
+
+
+::: {.callout-note}
+## This data is not normal
+Wibbly-wobbly graphs like this one can make it quite tricky to do statistics, because lots of the go-to methods don't work on this kind of data. It's also difficult to make clear, concise statements about this kind of data - the mean score of 30 doesn't really do justice to the underlying reality.
+:::
+
+But what about a person's psychic ability? How can we assign a numerical measure to something so mysterious? I have done it as follows:
+
+A person's psychic power is a number between 0 and 1, and it represents the likelihood that they will psychically discern the suit *or* the rank of any given card. If a person's psychic score is 1, they will psychically discern the suit and rank of every card. If a person's psychic score is 0, they will _never_ psychically discern anything about a card - but they could still make a lucky guess. If a person's psychic score is 0.1, then they will:
+
+- Psychically discern the suit of a card 10% of the time.
+- Psychically discern the rank of a card 10% of the time.
+
+They will therefore psychically discern the suit and rank of a card 1% of the time - in addition to any lucky guesses they might make.
+
+This was not the only way of measuring psychic ability, and it's almost certainly not the best way. I've made lots of assumptions about how psychic powers work. To name a few:
+
+- A person's psychic power has an equal effect on their ability to 'read' the suit of a card as its rank.
+- A perfect reading is simply a matter of reading suit and rank simultaneously.
+- Guessing a card of a similar rank (eg. 8 instead of 9) does not reflect psychic power.
+- Guessing a card of the same colour (eg. hearts instead of diamonds) does not reflect psychic power.
+
+If I had chosen another way of measuring psychic power, the results of my evaluation would have been different. The results mean nothing outside of the context of the model and its assumptions about the real world, and accepting the results entails accepting the assumptions of the model. But by far the biggest assumption made by this model is that **psychic powers are real**. We are not out to prove that psychic powers are real, but instead to work out how much psychic power our colleagues have.
+
+We won't actually get to evaluting the psychic abilities of our colleagues this week, but we will make the first step towards that goal, which is the simulate the distribution of scores that would be received by people who had psychic powers. We've already seen a simulation of the scores of 100,000 people with no psychic power, but now that we have defined our measure we can simulate scores for any level of psychic power. Here are the score distributions for 0, 0.1 and 0.25 alongside one another:
+
+
+```{r psychic_plot}
+#| message: false
+#| warning: false
+#| fig-cap: Score-distributions for different levels of psychich power
+#|
+psychic_simulations_plot +
+  annotate("text", x = 32, y = 0.03, label = "No psychic ability", hjust = "left") +
+  annotate("text", x = 51, y = 0.018, label = "Psychic score: 0.1",
+           colour = "blue", hjust = "left") +
+  annotate("text", x = 220, y = 0.0045, label = "Psychic score: 0.25",
+           colour = "purple", hjust = "left")
+```
+
+You'll notice that as psychic score increases, the plot looks less like a big, jagged mountain, and more like a big, yummy jelly. That's because a higher psychic ability makes things more predictable, because your overall score is less dependent on being lucky.
+
+### How psychic are our colleagues
+
+We're not going to answer that question this week. But I'll help you to get your brains ready for that by zooming in on the graph a bit and superimposing the scores of the four colleagues I tested onto the graph. I haven't labelled them, but Alex's score is the one that's way off to the right:
+
 ```{r bayesian_stuff}
+#| warning: false
+#| message: false
+#| fig-cap: "Now with CA staff scores added"
 psychic_scores <- readRDS(here("2026", "data", "psychic-testing_2026.rds"))
 psychic_scores <- 
   mutate(
@@ -187,13 +311,17 @@ psychic_scores <-
 
 psychic_scores <- summarise(psychic_scores, score = sum(score), .by = name)
 
-layers <- names(psychic_simulations_plot$layers)
-annotate_layers <- layers[str_detect(layers, "annotate")]
-
-psychic_simulations_plot[[-annotate_layers]] +
-  geom_vline(data = psychic_scores, aes(xintercept =  score),  colour = "orange", alpha = 0.8) +
-  scale_x_continuous(limits = c(NA, 100))
+psychic_simulations_plot +
+  geom_vline(data = psychic_scores,
+             aes(xintercept =  score),
+             colour = "red", alpha = 0.6, linetype = "dashed") +
+  coord_cartesian(xlim = c(0, 100))
 ```
+
+You'll notice that Alex's score intersects all three of the graphs above. So it's completely feasible that he's got no psychic power and he's just in the small percentage of people who made a few lucky guesses. But if we accept this model's (huge) assumptions about psychic power, then this kind of score is more probable for someone who has some psychic power than for someone who has none. 
+
+So how much psychic power do your colleagues have? Join me here next month to find out. The answer, as I have said, will not be simple.
+
 ## The Puzzle {#sec-puzzle}
 
 I'm very happy with [this connections puzzle](https://connections.swellgarfo.com/game/-OxaHEufUlsD9Y12hnkT), but I can't promise anyone is going to enjoy it.
