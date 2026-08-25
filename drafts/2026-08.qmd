@@ -198,4 +198,4 @@ psychic_simulations_plot[[-annotate_layers]] +
 
 ## The Puzzle {#sec-puzzle}
 
-I'm very happy with [this connections puzzle](https://connections.swellgarfo.com/game/-OxaHEufUlsD9Y12hnkT), but I can't promise anyone is going to enjoy it.
+Not actually a puzzle at all. It's your turn to test yourself for psychic powers, using this [clever widget](https://church-army.shinyapps.io/psychic-tester/) I've built. Tune in next week to find out whether or not you are psychic!
