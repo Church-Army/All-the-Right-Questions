@@ -163,6 +163,7 @@ psychic_annotations <-
 
 psychic_simulations_plot
 ```
+
 ```{r bayesian_stuff}
 psychic_scores <- readRDS(here("2026", "data", "psychic-testing_2026.rds"))
 psychic_scores <- 
@@ -194,6 +195,7 @@ psychic_simulations_plot[[-annotate_layers]] +
   geom_vline(data = psychic_scores, aes(xintercept =  score),  colour = "orange", alpha = 0.8) +
   scale_x_continuous(limits = c(NA, 100))
 ```
+
 ## The Puzzle {#sec-puzzle}
 
 I'm very happy with [this connections puzzle](https://connections.swellgarfo.com/game/-OxaHEufUlsD9Y12hnkT), but I can't promise anyone is going to enjoy it.
