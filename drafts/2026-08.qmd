@@ -4,7 +4,7 @@ title: "All the Right Questions August 2026"
 
 ## Welcome!
 
-Hello, and welcome to the first ever edition of *All the Right Questions:* The new monthly (??) newsletter for Church Army staff in which we think together about how we can get, share and use the data that we need to do the work that God has called us to. The format is still evolving, but I'm hoping to use this space to signpost resources, celebrate successes and remind you all that I exist and that I care about your professional relationship with data.
+Welcome to the 2nd edition of *All the Right Questions:* The new monthly newsletter for Church Army staff in which we think together about how we can get, share and use the data that we need to do the work that God has called us to. The format is still evolving, but I'm hoping to use this space to signpost resources, celebrate successes and remind you all that I exist and that I care about your professional relationship with data.
 
 Thanks so much for joining me here. If you've got any questions, or if there's anything you'd like to see covered in a future edition of *ARQ*, please let me know! Drop me an email (I'm david.lovell), or just come and say hi to me at my desk.
 
@@ -12,7 +12,7 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## This week:
 
--   [A promotion](#sec-promotion):
+-   [Really Good Survey Training in October](#sec-promotion):
 
 -   [The Big Idea](#sec-big-idea):
 
@@ -22,17 +22,11 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 -   [The puzzle](#sec-puzzle):
 
-## A promotion: Come and learn how to do surveys! {#sec-promotion}
+## Really Good Survey Training in October! {#sec-promotion}
 
-I've been making surveys for nearly a decade now. I've made some top-tier ones, but I've also made some awful guffs along the way. This Autumn, I'm going to be running a survey design workshop for my colleagues in the mission support team. Come and learn from all my mistakes! Exact dates to be confirmed, but the content will cover *at least* the following:
+Last month I promised you an update on the really good survey design training I would be running. This is that update: Please join me in the Carlisle Room at 9am on Thursday 15th October for an exhilarating morning that will equip you with the tools you need to ensure that purpose permeates every question of every survey you ever write again. If you ever write surveys (even little ones) for your job, then this is for you.
 
--   Designing purposeful surveys
--   Formalising big questions that mean something
--   Building effective survey items
--   Understanding bias and avoiding it
--   Not doing anything wrong or illegal in your survey
-
-Expect plenty of chat, lots of examples and no small amount of real-time survey design. It's going to be an absoulte blast, and definitely more interesting than your actual job. Details to follow in future editions of *ARQ*. If you're interested, please let me know because it would be a great encouragement to me.
+[Click here](mailto:david.lovell@churcharmy.org?subject=Please%20can%20I%20come%20to%20the%20Really%20Good%20Survey%20Training&body=Hello%20Dave%2C%0D%0A%0D%0AYour%20survey%20training%20thing%20sounds%20absolutely%20incredible%20and%20I%20would%20be%20completely%20over%20the%20moon%20if%20you%20sent%20me%20an%20invitation.%0D%0A%0D%0APS%20I%20just%20wanted%20to%20say%20that%20your%20hair%20has%20been%20looking%20so%20great%20lately.%20Do%20you%20use%20conditioner%3F%20What's%20your%20routine%3F) to request your exclusive invitation to this much-anticipated event. Spaces are limited!
 
 ![This could be you, realising your potential to create dope surveys](images/brain-draine.jpg){fig-alt="Brain Drain is my celebrity crush real talk"}
 
