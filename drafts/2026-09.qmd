@@ -1,0 +1,63 @@
+---
+title: "All the Right Questions August 2026"
+execute:
+  echo: false
+---
+
+## Welcome!
+
+Welcome to the 2nd edition of *All the Right Questions:* The new monthly newsletter for Church Army staff in which we think together about how we can get, share and use the data that we need to do the work that God has called us to. The format is still evolving, but I'm hoping to use this space to signpost resources, celebrate successes and remind you all that I exist and that I care about your professional relationship with data.
+
+Thanks so much for joining me here. If you've got any questions, or if there's anything you'd like to see covered in a future edition of *ARQ*, please let me know! Drop me an email (I'm david.lovell), or just come and say hi to me at my desk.
+
+This newsletter isn't an official Church Army publication and as such it doesn't represent the views of Church Army. Just me, Data Dave.
+
+## This week:
+
+-   [Really Good Survey Training in October](#sec-promotion): I'm very excited about it
+-   [The lesson](#sec-lesson): Alex Dobson has psychic powers
+-   [A Small Idea](#sec-big-idea): The grammar of data collection
+-   [An incredible achivement](#sec-achievement): Printing custom QR-codes onto sticky-labels
+-   [The puzzle](#sec-puzzle): Not really a puzzle at all - test yourself for psychic powers and get featured in the next episode of *All the Right Questions*!
+
+## Really Good Survey Training in October! {#sec-promotion}
+
+## A small idea: The grammar of data collection {#sec-big-idea}
+
+## Something I'm proud of: Customised QR-codes on address labels! {#sec-achievement}
+
+## The lesson: {#sec-lesson}
+
+```{r psychic_business}
+library(purrr)
+
+flip_cards <- readRDS(here("2026", "data", "flip-cards-function.RDS"))
+
+scores <- map(seq(0, 1, 0.01), \(x) flip_cards(10, 1e5, x))
+
+how_probable <- function(score, vector){
+  
+  distance <- abs(vector - score)
+  
+  mean(distance)
+}
+
+likelihood <- map_dbl(scores, \(x) how_probable(82.3, x))
+
+normed <- likelihood - min(likelihood)
+normed <- max(normed) - normed #no that isn't right be because it reduces variance
+normed <- normed / sum(normed)
+
+res <- tibble(score = seq(0, 1, 0.01), prob_density = normed)
+
+ggplot(res, aes(x = score, y = prob_density)) + 
+  geom_area(fill = "blue", colour = "black", alpha = 0.5) +
+  theme_minimal() + 
+  labs(x = "Psychic Score", y = "Probability density",
+       title = "Probable psychic scores for AD success score")
+
+```
+
+## The Puzzle {#sec-puzzle}
+
+Not actually a puzzle at all. It's your turn to test yourself for psychic powers, using this [clever widget](https://church-army.shinyapps.io/psychic-tester/) I've built. Tune in next month to find out whether or not you are psychic!
