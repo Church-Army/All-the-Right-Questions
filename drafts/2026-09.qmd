@@ -29,32 +29,38 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 ## The lesson: {#sec-lesson}
 
 ```{r psychic_business}
+#| cache: true
 library(purrr)
+library(here)
+library(ggplot2)
+library(dplyr)
 
 flip_cards <- readRDS(here("2026", "data", "flip-cards-function.RDS"))
 
-scores <- map(seq(0, 1, 0.01), \(x) flip_cards(10, 1e5, x))
+psychic_scores <- seq(0, 1, 0.01)
+success_scores <- map(psychic_scores, \(x) flip_cards(10, 4e6, x))
 
-how_probable <- function(score, vector){
-  
-  distance <- abs(vector - score)
-  
-  mean(distance)
+
+success_ratio <- function(x, threshold){
+  sum(x >= threshold) / length(x)
 }
 
-likelihood <- map_dbl(scores, \(x) how_probable(82.3, x))
+score_prob <- map_dbl(success_scores, success_ratio, 85)
 
-normed <- likelihood - min(likelihood)
-normed <- max(normed) - normed #no that isn't right be because it reduces variance
-normed <- normed / sum(normed)
+results <- 
+  tibble(score_prob = score_prob,
+         norm_score_prob = (score_prob - min(score_prob)) / max(score_prob),
+         norm_prob_diff = norm_score_prob - lag(norm_score_prob, default = 0),
+         psych_score  = psychic_scores)
 
-res <- tibble(score = seq(0, 1, 0.01), prob_density = normed)
+ggplot(results) + 
+  
+  geom_area(aes(x = psych_score, y = norm_prob_diff),
+            fill = "blue", alpha = 0.5) + 
+  
+  theme_minimal()
 
-ggplot(res, aes(x = score, y = prob_density)) + 
-  geom_area(fill = "blue", colour = "black", alpha = 0.5) +
-  theme_minimal() + 
-  labs(x = "Psychic Score", y = "Probability density",
-       title = "Probable psychic scores for AD success score")
+results
 
 ```
 
