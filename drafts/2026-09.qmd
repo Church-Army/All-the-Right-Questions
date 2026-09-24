@@ -28,12 +28,31 @@ This newsletter isn't an official Church Army publication and as such it doesn't
 
 ## The lesson: {#sec-lesson}
 
+Last month, we asked a bold and timely question. Are any of our colleagues psychic? This month, we're going to get some answers. 
+
+For those of you who are just joining us, here is a brief recap:
+
+- We got beloved colleagues (hereafter 'subjects') to guess 10 randomly drawn cards
+- We assigned a 'success score' based on the improbability of correct guesses
+- We postulated the existence of a 'psychic score' to describe a subject's relative psychic power
+
+This month, we'll look at each subject's success score and ask the question 'what level of psychic power best explains this result?'
+
+Let's start with our favourite and most potentially psychic subject: Alex Dobson. Alex got an astounding success score of 82.3 - more than double the expected average. The task before us is to establish the link between the measure of Alex's success and the measure of his psychic ability. The tool that we will use for that task is simulation. We'll ask the computer to pretend that it has a psychic score of 0, and then draw 10 cards and calculate its total success score. We will ask it to do this 4 million times and to give us 4 million scores. Then we will do the same thing again for a psychic score of 0.01, then 0.02, all the way up to a psychic score of 1. That's a total of 40 billion cards flipped, which takes the computer a few minutes to work out. 
+
+Next, we take Alex's success score of 82.3, and compare it with the results of our simulation. For each interval of psychic score, what proportion of our simulated results are equal or higher to 82.3? Here is what that looks like:
+
+
 ```{r psychic_business}
-#| cache: true
+#| cache: false
+#| fig-cap: "Purple is the colour of psychic"
 library(purrr)
 library(here)
 library(ggplot2)
 library(dplyr)
+library(scales)
+
+set.seed(pi)
 
 flip_cards <- readRDS(here("2026", "data", "flip-cards-function.RDS"))
 
@@ -45,22 +64,70 @@ success_ratio <- function(x, threshold){
   sum(x >= threshold) / length(x)
 }
 
-score_prob <- map_dbl(success_scores, success_ratio, 85)
+scores <- list(
+  anon_1 = 26/11 * 10,
+  JenniK = 17.333,
+  MagicIanthemagician = 190.666/52 * 10
+)
 
-results <- 
-  tibble(score_prob = score_prob,
+score_prob <- map_dbl(success_scores, success_ratio, 82.3)
+score_prob_anon_1 <- map_dbl(success_scores, success_ratio, scores$anon_1)
+score_prob_JenniK <- map_dbl(success_scores, success_ratio, scores$JenniK)
+score_prob_magician <- map_dbl(success_scores, success_ratio, scores$MagicIanthemagician)
+score_prob_dan <- map_dbl(success_scores, success_ratio, 4.33)
+
+len <- length(score_prob)
+
+scores <- tibble(
+  
+  subject = 
+    rep(
+    c("Alex", "Anon", "JenniK", "MagicIanthemagician", "Dan Palmer"),
+    each = len
+  ),
+  
+  score_prob = c(score_prob, score_prob_anon_1, score_prob_JenniK, score_prob_magician, score_prob_dan)
+)
+
+
+
+results <-
+  group_by(scores, subject) |> 
+  mutate(psych_score = psychic_scores,
          norm_score_prob = (score_prob - min(score_prob)) / max(score_prob),
-         norm_prob_diff = norm_score_prob - lag(norm_score_prob, default = 0),
-         psych_score  = psychic_scores)
+         norm_prob_diff = norm_score_prob - lag(norm_score_prob, default = 0)) 
+
+results |> 
+  filter(subject == "Alex") |> 
+  
+  ggplot(aes(x = psych_score, y = score_prob)) +
+  
+  geom_area(fill = "blue", colour = "black", alpha = 0.5) +
+  
+  labs(x = "Psychic score", y = "% beating 82.3", title = "Subject: Alex Dobson") +
+  
+  scale_y_continuous(labels = label_percent(1)) +
+  
+  theme_minimal()
+```
+
+
+
+
+```{r plotto}
+
 
 ggplot(results) + 
   
-  geom_area(aes(x = psych_score, y = norm_prob_diff),
-            fill = "blue", alpha = 0.5) + 
+  geom_area(aes(x = psych_score, y = norm_prob_diff, fill = subject),
+            alpha = 0.5, position = "dodge", colour = "black") + 
   
-  theme_minimal()
-
-results
+  theme_minimal() +
+  
+  labs(
+    x = "Psychic score",
+    y = "Probability density"
+  )
 
 ```
 
