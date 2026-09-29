@@ -6,23 +6,31 @@ execute:
 
 ## Welcome!
 
-Welcome to the 2nd edition of *All the Right Questions:* The new monthly newsletter for Church Army staff in which we think together about how we can get, share and use the data that we need to do the work that God has called us to. The format is still evolving, but I'm hoping to use this space to signpost resources, celebrate successes and remind you all that I exist and that I care about your professional relationship with data.
+Welcome to the 2nd edition of *All the Right Questions:* The new monthly Church Army newsletter about all things data. As always nothing here represents Church Army views - just mine.
 
 Thanks so much for joining me here. If you've got any questions, or if there's anything you'd like to see covered in a future edition of *ARQ*, please let me know! Drop me an email (I'm david.lovell), or just come and say hi to me at my desk.
 
-This newsletter isn't an official Church Army publication and as such it doesn't represent the views of Church Army. Just me, Data Dave.
-
 ## This week:
 
--   [Really Good Survey Training in October](#sec-promotion): I'm very excited about it
--   [The lesson](#sec-lesson): Alex Dobson has psychic powers
--   [A Small Idea](#sec-big-idea): The grammar of data collection
+-   [The Big Idea](#sec-big-idea): Is Church Army a Device?
+-   [The lesson](#sec-lesson): Exactly how psychic are we?
+-   [Really Good Survey Training in October](#sec-promotion): Spaces are filling
 -   [An incredible achivement](#sec-achievement): Printing custom QR-codes onto sticky-labels
 -   [The puzzle](#sec-puzzle): Not really a puzzle at all - test yourself for psychic powers and get featured in the next episode of *All the Right Questions*!
 
-## Really Good Survey Training in October! {#sec-promotion}
+## The Big Idea: Is Church Army a Device? {#sec-big-idea}
 
-## A small idea: The grammar of data collection {#sec-big-idea}
+Did you know that 'focus' is the Latin word for 'fireplace'?
+
+For centuries, the hearth was the centre of the home. It was the warmth around which a family gathered, and the light by which they saw one another every evening. Pre-modern people did not take warmth and light for granted, but carefully maintained them through an unwavering pattern of familial responsibility consisting of things like the chopping of wood, the shaving of kindling, the daily construction, conflagration and cleansing of the fire itself. The hearth was not merely a device for producing heat, but an object through which a family became entangled in mutual responsibility, the passing of the day and the enjoyment of one another's company. 
+
+I'm currently reading Albert Borgmann's _Technology and the Character of Contemporary Life_ (1984). It's a bit of a challenging book but very enjoyable and pertinent. The big idea of the book is that modern technological devices are starkly different from the tools that preceded them: The radio and the violin are both designed to provide music, but the radio is quite unlike the violin. For Borgmann, the most important difference is that the things modern devices 'produce' have almost nothing to do with the way that work - the radio 'produces' music by means of electrical transistors, but the relationship between the music and the transistors is a mystery. The promise of radios and streaming and noise-cancelling headphones is that I can have all the music I want, all to myself, whenever I want it, without any effort on the part of anyone. But the cost of that promise is, in effect, the decline of the local folk scene. Where once music was understood to be something local, skillful, shared and costly, it has now become something place-less, effortless, insular and cheap. 
+
+Why am I prattling on about this? I don't know if I've done it justice, but I've found Borgmann's 'device paradigm' to be an exciting and illuminating lens through which to view my relationships with the modern world. Everywhere I am promised predictable results, commodified experiences and satisfaction without toil. And it's got me to thinking - with my Data Insights hat on - can the modern charity be understood as a device? And if so, what are the critical implications for the way that we approach collecting data and reporting impact?
+
+The device paradigm, as far as I can tell, is writ large across the ambitions and assumptions of the modern charity. Gone are the days of local volunteers shaking a tin outside a Sainsburys - we are living in the era of the targeted email campaign. Consider the use of devices in an email campaign as they relate to a single digital photograph: A camera is used to capture a scene, converting it into a digital commodity. A computer (and various servers) are used to send that digital image out to hundreds of supporters. And, with any luck, those supporters will be sufficiently motivated by the photograph to press another button on their computer that wires us money on a regular basis. 
+
+## Really Good Survey Training in October! {#sec-promotion}
 
 ## Something I'm proud of: Customised QR-codes on address labels! {#sec-achievement}
 
